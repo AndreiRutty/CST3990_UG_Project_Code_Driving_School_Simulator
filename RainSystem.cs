@@ -19,7 +19,11 @@ public class RainSystem : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        if (canRain)
+        {
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        }
+
     }
 
     public void AddRain()

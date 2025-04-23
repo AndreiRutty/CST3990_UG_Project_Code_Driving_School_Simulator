@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject background;
     public GameObject defaultCity;
     public Transform spawnPoint;
+    public GameObject feedbackPanel;
 
     [Space(10)]
     [Header("Buttons Game Objects")]
@@ -51,10 +52,12 @@ public class GameManager : MonoBehaviour
         if (testMode)
         {
             trafficRulesManager.SetActive(true);
+            feedbackPanel.SetActive(true);
         }
         else
         {
             trafficRulesManager.SetActive(false);
+            feedbackPanel.SetActive(false);
         }
 
     }
