@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
          // Random Map
             if (uIManager.hasClickRandomMap)
             {
-                GenerateCity();
+                GenerateCity(uIManager.citySize);
                 RemoveDefaultCity();
             }
             // Default Map
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     {
         if (uIManager.hasClickRandomMap)
         {
-            GenerateCity();
+            GenerateCity(uIManager.citySize);
             RemoveDefaultCity();
         }
         // Default Map
@@ -182,9 +182,9 @@ public class GameManager : MonoBehaviour
         player.SetActive(false);
     }
 
-    public void GenerateCity()
+    public void GenerateCity(int value)
     {
-        runTimeSample.GenerateCityAtRuntime(1);
+        runTimeSample.GenerateCityAtRuntime(value);
         runTimeSample.GenerateBuildings();
     }
 

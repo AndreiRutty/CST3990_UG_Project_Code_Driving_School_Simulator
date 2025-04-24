@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI mapChosenText;
     public GameObject trafficChosenGameObject;
     public TextMeshProUGUI trafficChosenText;
+    public GameObject controlPanel;
+    bool openControl = true;
+
+    public int citySize;
     void Start()
     {
         OpenMenu();
@@ -25,6 +30,15 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+
+        if (!menu.activeSelf)
+        {
+            if (Input.GetKey(KeyCode.T))
+            {
+                openControl = !openControl;
+            }
+            controlPanel.SetActive(openControl);
+        }
 
     }
 
@@ -34,6 +48,7 @@ public class UIManager : MonoBehaviour
         errorsCanva.SetActive(false);
         testOverPanel.SetActive(false);
         pausePanel.SetActive(false);
+        controlPanel.SetActive(false);
     }
 
     public void CloseMenu()
@@ -42,6 +57,7 @@ public class UIManager : MonoBehaviour
         errorsCanva.SetActive(true);
         testOverPanel.SetActive(false);
         pausePanel.SetActive(false);
+        controlPanel.SetActive(true);
     }
 
     public void OpenPauseMenu()
@@ -82,7 +98,6 @@ public class UIManager : MonoBehaviour
         DisplayAndHideTrafficText("Right Traffic Chosen");
     }
 
-
     public void DisplayAndHideMapText(string text)
     {
         mapChosenGameObject.SetActive(true);
@@ -93,5 +108,11 @@ public class UIManager : MonoBehaviour
     {
         trafficChosenGameObject.SetActive(true);
         trafficChosenText.text = text;
+    }
+
+    public void SetCitySize(int value)
+    {
+        citySize = value;
+        Debug.Log(citySize);
     }
 }
